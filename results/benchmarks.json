@@ -1,0 +1,29 @@
+{
+    "benchmarks.ExecuteSync.time_excute": {
+        "code": "class ExecuteSync:\n    def time_excute(self):\n        for _ in range(100):\n            schema.execute_sync(\"{ hello }\")",
+        "min_run_count": 2,
+        "name": "benchmarks.ExecuteSync.time_excute",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "9deb5ce94676fda4d9dcfdfce614626fbe23cca91eec4d8c94c3fe1aa002ec47",
+        "warmup_time": -1
+    },
+    "benchmarks.MemSuite.mem_excute": {
+        "code": "class MemSuite:\n    def mem_excute(self):\n        for _ in range(100):\n            schema.execute_sync(\"{ hello }\")",
+        "name": "benchmarks.MemSuite.mem_excute",
+        "param_names": [],
+        "params": [],
+        "timeout": 60.0,
+        "type": "memory",
+        "unit": "bytes",
+        "version": "7d07f63a3695b58fcf746e175d1a401a859b434593db8472ff1cd34792954ccb"
+    },
+    "version": 2
+}
