@@ -1,0 +1,58 @@
+name: "ASV Bot"
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "53 17 * * *"
+
+jobs:
+  benchmark:
+    name: "Run benchmarks"
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: ${{ github.actor }}-asv
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.9.x"
+          architecture: "x64"
+
+      - name: Write ASV config
+        shell: bash
+        run: |
+          cat << EOF > ~/.asv-machine.json
+            {
+              "GitHub Actions": {
+                  "arch": "unknown",
+                  "cpu": "unknown",
+                  "machine": "GitHub Actions",
+                  "num_cpu": "unknown",
+                  "os": "unknown",
+                  "ram": "unknown"
+              },
+              "version": 1
+            }
+          EOF
+
+      - name: Install ASV
+        run: pip install asv virtualenv
+
+      - name: Run benchmarks
+        continue-on-error: true
+        run: |
+          asv run HEAD~50..HEAD
+
+      - name: Publish benchmarks
+        run: |
+          asv publish
+
+      - uses: stefanzweifel/git-auto-commit-action@v4

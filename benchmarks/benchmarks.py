@@ -1,23 +1,24 @@
-import strawberry
+from pathlib import Path
 
+from .api import schema
 
-@strawberry.type
-class Query:
-    @strawberry.field
-    def hello(self) -> str:
-        return "Hello World!"
-
-
-schema = strawberry.Schema(query=Query)
+basic_query = (Path(__file__).parent / "queries/simple.graphql").read_text()
+many_fields_query = (Path(__file__).parent / "queries/many_fields.graphql").read_text()
 
 
 class ExecuteSync:
-    def time_excute(self):
+    def time_execute(self):
         for _ in range(100):
-            schema.execute_sync("{ hello }")
+            schema.execute_sync(basic_query)
 
+    time_execute.repeat = 1
 
-class MemSuite:
-    def mem_excute(self):
-        for _ in range(100):
-            schema.execute_sync("{ hello }")
+    def time_execute_with_many_fields(self):
+        schema.execute_sync(many_fields_query)
+
+    time_execute_with_many_fields.repeat = 10
+
+    def mem_execute_with_many_fields(self):
+        schema.execute_sync(many_fields_query)
+
+    mem_execute_with_many_fields.repeat = 10
