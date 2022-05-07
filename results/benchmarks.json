@@ -48,7 +48,7 @@
         "number": 0,
         "param_names": [],
         "params": [],
-        "repeat": 0,
+        "repeat": 10,
         "rounds": 2,
         "sample_time": 0.01,
         "timeout": 60.0,
