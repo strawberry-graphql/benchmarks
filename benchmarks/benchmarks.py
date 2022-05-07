@@ -28,3 +28,5 @@ class ExecuteSync:
 
     def time_execute_with_many_fields_and_directives(self):
         schema_with_directives.execute_sync(many_fields_query_with_directives)
+
+    time_execute_with_many_fields_and_directives.repeat = 10
