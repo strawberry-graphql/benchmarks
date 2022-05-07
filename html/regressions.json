@@ -1,1 +1,1 @@
-{"regressions": []}
+{"regressions": [["benchmarks.ExecuteSync.time_execute", "graphs/arch-unknown/branch-main/cpu-unknown/machine-GitHub Actions/num_cpu-unknown/os-unknown/python-3.9/ram-unknown/benchmarks.ExecuteSync.time_execute.json", {}, null, 0.0731456984999852, 0.06352753599992411, [[null, 5848, 0.06352753599992411, 0.07121217750000142]]]]}
