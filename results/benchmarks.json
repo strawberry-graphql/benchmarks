@@ -41,5 +41,21 @@
         "version": "18e3e6152a2e6936fcec467fdb3ce3c3c3bcdd725225c886399064b197a10747",
         "warmup_time": -1
     },
+    "benchmarks.ExecuteSync.time_execute_with_many_fields_and_directives": {
+        "code": "class ExecuteSync:\n    def time_execute_with_many_fields_and_directives(self):\n        schema_with_directives.execute_sync(many_fields_query_with_directives)",
+        "min_run_count": 2,
+        "name": "benchmarks.ExecuteSync.time_execute_with_many_fields_and_directives",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "0db7dc1b3e817216f15eab8ae3b417a23a2ab13cb53ccde4e49e9de7eed5535e",
+        "warmup_time": -1
+    },
     "version": 2
 }
