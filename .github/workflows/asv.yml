@@ -39,16 +39,13 @@ jobs:
             }
           EOF
 
-      - name: Install ASV
-        run: pip install asv virtualenv
-
       - name: Run benchmarks
         continue-on-error: true
         run: |
-          asv run HEAD~50..HEAD
+          /home/pi/.local/bin/asv run HEAD~50..HEAD
 
       - name: Publish benchmarks
         run: |
-          asv publish
+          /home/pi/.local/bin/asv publish
 
       - uses: stefanzweifel/git-auto-commit-action@v4
