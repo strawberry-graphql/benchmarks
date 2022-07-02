@@ -42,7 +42,7 @@ jobs:
       - name: Run benchmarks
         continue-on-error: true
         run: |
-          /home/pi/.local/bin/asv run HEAD~50..HEAD
+          /home/pi/.local/bin/asv run HEAD~200..HEAD
 
       - name: Publish benchmarks
         run: |
