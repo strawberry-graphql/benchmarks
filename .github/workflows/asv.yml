@@ -11,7 +11,7 @@ jobs:
   benchmark:
     name: "Run benchmarks"
     runs-on: self-hosted
-    
+
     concurrency:
       group: ${{ github.actor }}-asv
       cancel-in-progress: false
