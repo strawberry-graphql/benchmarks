@@ -1,0 +1,9 @@
+{
+    "arch": "arm64",
+    "cpu": "Apple M1 Max",
+    "machine": "patrick-studio.local",
+    "num_cpu": "10",
+    "os": "Darwin 22.2.0",
+    "ram": "68719476736",
+    "version": 1
+}

@@ -1,28 +1,28 @@
 {
-    "benchmarks.ExecuteSync.mem_execute_with_many_fields": {
-        "code": "class ExecuteSync:\n    def mem_execute_with_many_fields(self):\n        schema.execute_sync(many_fields_query)",
-        "name": "benchmarks.ExecuteSync.mem_execute_with_many_fields",
+    "benchmarks.ExecuteSync.peakmem_execute_with_many_fields": {
+        "code": "class ExecuteSync:\n    def peakmem_execute_with_many_fields(self):\n        schema.execute_sync(many_fields_query)",
+        "name": "benchmarks.ExecuteSync.peakmem_execute_with_many_fields",
         "param_names": [],
         "params": [],
         "timeout": 60.0,
-        "type": "memory",
+        "type": "peakmemory",
         "unit": "bytes",
-        "version": "200eb25663938ba01b08d904d14f52ab552ee29c055f93f6f14981dd962c2c8e"
+        "version": "00965fe1ab15539e3996425cc94519ea53c23f1fd7081d62943aeba9cced0b05"
     },
     "benchmarks.ExecuteSync.time_execute": {
-        "code": "class ExecuteSync:\n    def time_execute(self):\n        for _ in range(100):\n            schema.execute_sync(basic_query)",
+        "code": "class ExecuteSync:\n    def time_execute(self):\n        schema.execute_sync(basic_query)",
         "min_run_count": 2,
         "name": "benchmarks.ExecuteSync.time_execute",
         "number": 0,
         "param_names": [],
         "params": [],
-        "repeat": 1,
+        "repeat": 0,
         "rounds": 2,
         "sample_time": 0.01,
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "b7b5d42b0c2846c82bb1559312fb0da905a27fcd3783a86806d1e83ace02b134",
+        "version": "1fa645bc53415005efc5b01954c25af12157b6b235dc616ab4ef6ff1df96dc7f",
         "warmup_time": -1
     },
     "benchmarks.ExecuteSync.time_execute_with_many_fields": {
@@ -32,7 +32,7 @@
         "number": 0,
         "param_names": [],
         "params": [],
-        "repeat": 10,
+        "repeat": 0,
         "rounds": 2,
         "sample_time": 0.01,
         "timeout": 60.0,
@@ -48,7 +48,7 @@
         "number": 0,
         "param_names": [],
         "params": [],
-        "repeat": 10,
+        "repeat": 0,
         "rounds": 2,
         "sample_time": 0.01,
         "timeout": 60.0,

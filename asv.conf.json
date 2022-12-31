@@ -13,11 +13,5 @@
   "build_command": ["python -m pip wheel -w {build_cache_dir} {build_dir}"],
 
   "environment_type": "virtualenv",
-  "pythons": ["3.9"],
-  // "matrix": {
-  //   "req": {
-  //     "uvicorn": [null]
-  //   }
-  // }
-  // "exclude": [{"python": "3.10", "req": {"uvicorn": null}}]
+  "pythons": ["3.9", "3.11"]
 }
