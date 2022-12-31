@@ -22,30 +22,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Write ASV config
-        shell: bash
-        run: |
-          cat << EOF > ~/.asv-machine.json
-            {
-              "GitHub Actions": {
-                  "arch": "unknown",
-                  "cpu": "unknown",
-                  "machine": "GitHub Actions",
-                  "num_cpu": "unknown",
-                  "os": "unknown",
-                  "ram": "unknown"
-              },
-              "version": 1
-            }
-          EOF
-
       - name: Run benchmarks
         continue-on-error: true
         run: |
-          /home/pi/.local/bin/asv run HEAD~10..HEAD
+          ~/.local/bin/asv run HEAD~10..HEAD
 
       - name: Publish benchmarks
         run: |
-          /home/pi/.local/bin/asv publish
+          ~/.local/bin/asv publish
 
       - uses: stefanzweifel/git-auto-commit-action@v4
