@@ -32,3 +32,4 @@ jobs:
           ~/.local/bin/asv publish
 
       - uses: stefanzweifel/git-auto-commit-action@v4
+        commit_options: '--no-verify --no-gpg-sign'
