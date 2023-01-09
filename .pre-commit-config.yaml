@@ -24,7 +24,7 @@ repos:
         exclude: ^(html|results)
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.206
+    rev: v0.0.215
     hooks:
       - id: ruff
         exclude: ^tests/codegen/snapshots/python/
