@@ -63,4 +63,4 @@ def uppercase(value: str) -> str:
 
 
 schema = strawberry.Schema(query=Query)
-schema_with_directives = strawberry.Schema(query=Query, directives=[])
+schema_with_directives = strawberry.Schema(query=Query, directives=[uppercase])
