@@ -2,6 +2,7 @@ from typing import List
 
 import strawberry
 from strawberry.directive import DirectiveLocation
+from typing import AsyncIterator
 
 
 @strawberry.type
@@ -57,10 +58,19 @@ class Query:
         return people[:limit] if limit else people
 
 
+@strawberry.type
+class Subscription:
+    @strawberry.subscription
+    async def something(self) -> AsyncIterator[str]:
+        yield "Hello World!"
+
+
 @strawberry.directive(locations=[DirectiveLocation.FIELD])
 def uppercase(value: str) -> str:
     return value.upper()
 
 
-schema = strawberry.Schema(query=Query)
-schema_with_directives = strawberry.Schema(query=Query, directives=[uppercase])
+schema = strawberry.Schema(query=Query, subscription=Subscription)
+schema_with_directives = strawberry.Schema(
+    query=Query, directives=[uppercase], subscription=Subscription
+)
