@@ -24,6 +24,7 @@ jobs:
 
       - name: Run benchmarks
         run: |
+          . /opt/homebrew/opt/asdf/libexec/asdf.sh
           ~/.local/bin/asv run HEAD~10..HEAD
 
       - name: Publish benchmarks
