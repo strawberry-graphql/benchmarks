@@ -23,7 +23,6 @@ jobs:
           fetch-depth: 0
 
       - name: Run benchmarks
-        continue-on-error: true
         run: |
           ~/.local/bin/asv run HEAD~10..HEAD
 
