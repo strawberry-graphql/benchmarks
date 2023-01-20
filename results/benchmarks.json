@@ -57,5 +57,21 @@
         "version": "0db7dc1b3e817216f15eab8ae3b417a23a2ab13cb53ccde4e49e9de7eed5535e",
         "warmup_time": -1
     },
+    "benchmarks.Subscriptions.time_subscription": {
+        "code": "class Subscriptions:\n    def time_subscription(self):\n        s = \"\"\"\n        subscription {\n            something\n        }\n        \"\"\"\n    \n        async def _run():\n            for _ in range(100):\n                iterator = await schema.subscribe(s)\n    \n                value = await iterator.__anext__()\n    \n                assert value.data[\"something\"] == \"Hello World!\"\n    \n        asyncio.run(_run())",
+        "min_run_count": 2,
+        "name": "benchmarks.Subscriptions.time_subscription",
+        "number": 1,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "b5f3629db4859b578217f941ab1e3caf39d9bf2e2feeae945c40b8ec936f5f58",
+        "warmup_time": -1
+    },
     "version": 2
 }
