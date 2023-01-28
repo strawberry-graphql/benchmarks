@@ -25,6 +25,54 @@
         "version": "1fa645bc53415005efc5b01954c25af12157b6b235dc616ab4ef6ff1df96dc7f",
         "warmup_time": -1
     },
+    "benchmarks.ExecuteSync.time_execute_with_1000_items": {
+        "code": "class ExecuteSync:\n    def time_execute_with_1000_items(self):\n        schema.execute_sync(items_query, variable_values={\"count\": 1000})",
+        "min_run_count": 2,
+        "name": "benchmarks.ExecuteSync.time_execute_with_1000_items",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "fbd813bef8afee750db903e131be48b7b8722eac83e6c45d54c36e7d45840cae",
+        "warmup_time": -1
+    },
+    "benchmarks.ExecuteSync.time_execute_with_100_items": {
+        "code": "class ExecuteSync:\n    def time_execute_with_100_items(self):\n        schema.execute_sync(items_query, variable_values={\"count\": 100})",
+        "min_run_count": 2,
+        "name": "benchmarks.ExecuteSync.time_execute_with_100_items",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "9feba067f7f6b933f39335ced99bdd2aa68100828c61334eada3630a3b7ef47d",
+        "warmup_time": -1
+    },
+    "benchmarks.ExecuteSync.time_execute_with_10_items": {
+        "code": "class ExecuteSync:\n    def time_execute_with_10_items(self):\n        schema.execute_sync(items_query, variable_values={\"count\": 10})",
+        "min_run_count": 2,
+        "name": "benchmarks.ExecuteSync.time_execute_with_10_items",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "8fd33ae72148b8aa76d9e201c612e8602e4ea841b074c0a7b87640567e184160",
+        "warmup_time": -1
+    },
     "benchmarks.ExecuteSync.time_execute_with_many_fields": {
         "code": "class ExecuteSync:\n    def time_execute_with_many_fields(self):\n        schema.execute_sync(many_fields_query)",
         "min_run_count": 2,
@@ -42,7 +90,7 @@
         "warmup_time": -1
     },
     "benchmarks.ExecuteSync.time_execute_with_many_fields_and_directives": {
-        "code": "class ExecuteSync:\n    def time_execute_with_many_fields_and_directives(self):\n        schema_with_directives.execute_sync(many_fields_query_with_directives)",
+        "code": "class ExecuteSync:\n    def time_execute_with_many_fields_and_directives(self):\n        schema_with_directives.execute_sync(many_fields_query_directives)",
         "min_run_count": 2,
         "name": "benchmarks.ExecuteSync.time_execute_with_many_fields_and_directives",
         "number": 0,
@@ -54,7 +102,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "0db7dc1b3e817216f15eab8ae3b417a23a2ab13cb53ccde4e49e9de7eed5535e",
+        "version": "497790ffc7531cbd75af3dc43fa1566578d1f05194f7bb814523d402c606ad5a",
         "warmup_time": -1
     },
     "benchmarks.Subscriptions.time_subscription": {
