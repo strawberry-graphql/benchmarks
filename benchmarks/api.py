@@ -6,6 +6,12 @@ from typing import AsyncIterator
 
 
 @strawberry.type
+class Item:
+    name: str
+    index: int
+
+
+@strawberry.type
 class Person:
     name: str
     age: int
@@ -56,6 +62,10 @@ class Query:
     @strawberry.field
     def people(self, limit: int = 100) -> List[Person]:
         return people[:limit] if limit else people
+
+    @strawberry.field
+    def items(self, count: int) -> List[Item]:
+        return [Item(name="Item", index=i) for i in range(count)]
 
 
 @strawberry.type
