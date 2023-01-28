@@ -6,6 +6,11 @@ on:
       - main
   schedule:
     - cron: "53 17 * * *"
+  workflow_dispatch:
+    inputs:
+      number:
+        description: 'Number of commits to benchmark'
+        required: false
 
 jobs:
   benchmark:
@@ -26,6 +31,13 @@ jobs:
         run: |
           . /opt/homebrew/opt/asdf/libexec/asdf.sh
           ~/.local/bin/asv run HEAD~10..HEAD
+        if: "${{ github.event.inputs.number == '' }}"
+
+      - name: Run benchmarks
+        run: |
+          . /opt/homebrew/opt/asdf/libexec/asdf.sh
+          ~/.local/bin/asv run HEAD~${{ github.event.inputs.number }}..HEAD
+        if: "${{ github.event.inputs.number != '' }}"
 
       - name: Publish benchmarks
         run: |
