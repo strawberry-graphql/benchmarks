@@ -29,13 +29,13 @@ jobs:
 
       - name: Run benchmarks
         run: |
-          . /opt/homebrew/opt/asdf/libexec/asdf.sh
+          ~/.local/bin/rtx activate bash
           ~/.local/bin/asv run HEAD~10..HEAD
         if: "${{ github.event.inputs.number == '' }}"
 
       - name: Run benchmarks
         run: |
-          . /opt/homebrew/opt/asdf/libexec/asdf.sh
+          ~/.local/bin/rtx activate bash
           ~/.local/bin/asv run HEAD~${{ github.event.inputs.number }}..HEAD
         if: "${{ github.event.inputs.number != '' }}"
 
