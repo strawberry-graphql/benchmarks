@@ -16,5 +16,5 @@
   ],
 
   "environment_type": "virtualenv",
-  "pythons": ["3.9", "3.11"]
+  "pythons": ["3.9", "3.11", "3.12"]
 }
