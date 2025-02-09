@@ -4,5 +4,5 @@
                 Latest value: 32.7ms (265.73% worse
                 than best value 8.93ms).</content></entry><entry><id>tag:strawberry-graphql.asv,2024-01-24:/5641b70657255a3f896047c9f06e6baea0344c2b988b72f406a0a26901336b36</id><title xml:lang="en">4.27% benchmarks.ExecuteSync.peakmem_execute_with_many_fields</title><updated>2024-02-25T17:55:16Z</updated><link href="index.html#benchmarks.ExecuteSync.peakmem_execute_with_many_fields?python=3.12&amp;commits=fdd06a434cf4b89c69d9cc314b9c8f6643f23fa1" /><content xml:lang="en" type="html">&lt;a href="index.html#benchmarks.ExecuteSync.peakmem_execute_with_many_fields?python=3.12&amp;commits=fdd06a434cf4b89c69d9cc314b9c8f6643f23fa1"&gt;4.27% regression&lt;/a&gt; on 2024-01-24 10:07:14 in commit &lt;a href="https://github.com/strawberry-graphql/strawberry/commit/fdd06a434cf4b89c69d9cc314b9c8f6643f23fa1"&gt;fdd06a43&lt;/a&gt;.&lt;br&gt;
                 New value: 35M, old value: 33.6M.&lt;br&gt;
-                Latest value: 36.8M (9.44% worse
+                Latest value: 36.7M (9.31% worse
                 than best value 33.6M).</content></entry></feed>
