@@ -52,6 +52,7 @@ def pending_targets(
         for record in records
         if record["environment"]["python"].split()[0] == PYTHON
         and record["environment"]["runner"]["RUNNER_NAME"] == machine
+        and "harness_revision" not in record["environment"]
     }
 
     def missing(commit: str, stress: bool) -> bool:
@@ -159,6 +160,8 @@ def import_run(
         "dependencies": digest(dependencies),
         "python_build": digest(environment["python"]),
     }
+    if "measurement_profile" in environment:
+        params["measurement_profile"] = environment["measurement_profile"]
     identity = digest(params)
     date = int(git(source, "show", "-s", "--format=%ct", commit)) * 1000
     result = Results(params, {}, commit, date, PYTHON, f"native-{identity}", {})

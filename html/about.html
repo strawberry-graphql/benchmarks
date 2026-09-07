@@ -278,8 +278,9 @@
             <li>A changed workload or Python version starts a new baseline.</li>
             <li>
               Daily runs track main and catch up unmeasured stable releases.
-              Release runs include the largest workloads. Old benchmark history
-              was reset; each new successful measurement is retained.
+              Release runs include the largest workloads. Old benchmark data
+              was reset; explicit backfills remeasure historical source with a
+              fixed modern suite. Each new successful measurement is retained.
             </li>
             <li>
               Compare CPU estimates, native timings and allocation metrics

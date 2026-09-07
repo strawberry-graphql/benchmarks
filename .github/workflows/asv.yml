@@ -14,6 +14,35 @@ on:
         description: Include the largest main workloads (releases always include them)
         default: false
         type: boolean
+      history_commits:
+        description: Historical window size (0 for normal runs, at most 100)
+        default: 0
+        type: number
+      history_ref:
+        description: End of the historical window; uses a fixed modern harness
+        default: main
+        type: string
+      history_batch:
+        description: Zero-based batch of ten; use the backfill workflow for all batches
+        default: 0
+        type: number
+  workflow_call:
+    inputs:
+      history_commits:
+        default: 0
+        type: number
+      history_ref:
+        default: main
+        type: string
+      history_batch:
+        default: 0
+        type: number
+      include_stress:
+        default: false
+        type: boolean
+      strawberry_ref:
+        default: ""
+        type: string
 
 permissions:
   contents: read
@@ -32,6 +61,8 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # Each serial backfill batch must see the preceding batch's saved data.
+          ref: ${{ github.ref }}
           persist-credentials: false
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -54,7 +85,15 @@ jobs:
         env:
           STRAWBERRY_REF: ${{ inputs.strawberry_ref }}
           INCLUDE_STRESS: ${{ inputs.include_stress || github.event.schedule == '53 17 * * 0' }}
-        run: uv run --no-sync python -m scripts.run_benchmarks --source strawberry
+          HISTORY_COMMITS: ${{ inputs.history_commits || 0 }}
+          HISTORY_REF: ${{ inputs.history_ref }}
+          HISTORY_BATCH: ${{ inputs.history_batch || 0 }}
+        run: |
+          if [ "$HISTORY_COMMITS" != 0 ]; then
+            uv run --no-sync python -m scripts.backfill run --source strawberry
+          else
+            uv run --no-sync python -m scripts.run_benchmarks --source strawberry
+          fi
       - name: Generate ASV charts from verified measurements
         id: publish
         if: ${{ !cancelled() && steps.measure.outcome != 'skipped' }}
@@ -63,7 +102,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: benchmark-walltime-py3.14.7
+          name: benchmark-walltime-py3.14.7${{ inputs.history_commits > 0 && format('-history-{0}', inputs.history_batch) || '' }}
           path: |
             benchmark-artifacts/
             results/

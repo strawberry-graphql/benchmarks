@@ -65,9 +65,31 @@ another revision is unsuccessful, and the job still reports that error.
 
 Raw CodSpeed JSON and JUnit diagnostics are attached to each workflow run for
 90 days. Normalized timing history and environment records are retained in Git.
-Old results cannot be recreated by the new workflow because its release cutoff
-excludes them. The first new data point is a baseline; trends appear as further
-commits and releases are measured.
+The scheduled release cutoff excludes obsolete runs. Explicit historical backfills
+remeasure older source code using the modern suite; they never restore the old
+benchmark data or measurement definitions.
+
+## Historical backfills
+
+Dispatch **Backfill benchmark history** to measure up to 100 mainline commits.
+The workflow freezes the end revision once, then runs serial batches of ten on
+the dedicated Mac. Each batch publishes its results before the next starts. A
+final verification checks that every requested commit has measurements. Repeating
+the same request skips completed commits, so interrupted batches can resume.
+
+Historical runs use the fixed benchmark code and dependency lock from `226d2dea`
+on Python 3.14.7 while importing Strawberry from each target checkout. Metadata
+records both revisions and the actual import path; subprocess benchmarks also
+import the target. The historical series has its own measurement profile and
+does not satisfy the regular release workflow's coverage checks.
+
+The backfill uses 77 compatible workloads, including stress cases. The four HTTP
+cases are excluded consistently because their exact response-byte contract
+changed with JSON whitespace. Current release runs continue measuring all 81
+cases. Historical benchmarks must still pass their correctness assertions;
+unsupported or unsuccessful revisions are reported as missing, never as faster
+timings. Roughly two minutes of measurement per commit means a 100-commit run
+can take several hours, with results appearing after each batch.
 
 ## Local development
 
