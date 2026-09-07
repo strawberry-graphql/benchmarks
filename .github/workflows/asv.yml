@@ -36,7 +36,7 @@ jobs:
       run:
         working-directory: strawberry
     env:
-      BENCHMARK_SELECTION: ${{ (inputs.include_stress || github.event.schedule == '53 17 * * 0') && '' || 'not benchmark_stress' }}
+      BENCHMARK_SELECTION: ${{ !inputs.include_stress && github.event.schedule != '53 17 * * 0' && 'not benchmark_stress' || '' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
