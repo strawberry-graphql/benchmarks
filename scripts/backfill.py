@@ -81,7 +81,7 @@ def run_batch(root: Path, source: Path, end: str, count: int, batch: int) -> Non
         subprocess.run(
             ["git", "-C", str(source), "checkout", "--detach", commit], check=True
         )
-        for path in (source / ".codspeed").glob("results_*.json"):
+        for path in (harness / ".codspeed").glob("results_*.json"):
             path.unlink()
         print(f"Measuring historical commit {commit}", flush=True)
         try:
@@ -99,14 +99,14 @@ def run_batch(root: Path, source: Path, end: str, count: int, batch: int) -> Non
                 env=env,
                 check=True,
             )
-            for path in (source / ".codspeed").glob("results_*.json"):
+            for path in (harness / ".codspeed").glob("results_*.json"):
                 shutil.copyfile(path, artifact / path.name)
             import_run(root, source, artifact, ref=commit, include_stress=True)
         except (OSError, ValueError, subprocess.CalledProcessError) as error:
             print(f"Historical measurement failed for {commit}: {error}", flush=True)
             failures.append(commit)
         finally:
-            for path in (source / ".codspeed").glob("results_*.json"):
+            for path in (harness / ".codspeed").glob("results_*.json"):
                 shutil.copyfile(path, artifact / path.name)
     if failures:
         raise SystemExit(f"Unsuccessful historical revisions: {', '.join(failures)}")
