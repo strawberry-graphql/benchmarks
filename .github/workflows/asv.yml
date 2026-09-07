@@ -1,48 +1,77 @@
-name: "ASV Bot"
+name: Native benchmarks
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: "53 17 * * *"
+    - cron: "53 17 * * 1-6"
+    - cron: "53 17 * * 0"
   workflow_dispatch:
     inputs:
-      number:
-        description: 'Number of commits to benchmark'
-        required: false
+      strawberry_ref:
+        description: Strawberry branch, tag, or commit (trusted maintainer code only)
+        default: main
+        type: string
+      include_stress:
+        description: Include the largest scaling workloads
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-benchmarks
+  cancel-in-progress: false
 
 jobs:
-  benchmark:
-    name: "Run benchmarks"
-    runs-on: self-hosted
-
-    concurrency:
-      group: ${{ github.actor }}-asv
-      cancel-in-progress: false
-
+  walltime:
+    # Existing dedicated Mac. Never execute untrusted pull requests here.
+    runs-on: [self-hosted, macOS, ARM64]
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        python: ["3.12.13", "3.14.7"]
+    defaults:
+      run:
+        working-directory: strawberry
+    env:
+      BENCHMARK_SELECTION: ${{ (inputs.include_stress || github.event.schedule == '53 17 * * 0') && '' || 'not benchmark_stress' }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 0
-
-      - name: Run benchmarks
-        run: |
-          ~/.local/bin/rtx activate bash
-          ~/.local/bin/asv run HEAD~10..HEAD
-        if: "${{ github.event.inputs.number == '' }}"
-
-      - name: Run benchmarks
-        run: |
-          ~/.local/bin/rtx activate bash
-          ~/.local/bin/asv run HEAD~${{ github.event.inputs.number }}..HEAD
-        if: "${{ github.event.inputs.number != '' }}"
-
-      - name: Publish benchmarks
-        run: |
-          ~/.local/bin/asv publish
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
+          repository: strawberry-graphql/strawberry
+          ref: ${{ inputs.strawberry_ref || 'main' }}
+          path: strawberry
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
-          commit_options: '--no-verify --no-gpg-sign'
+          enable-cache: true
+          cache-dependency-glob: strawberry/uv.lock
+          python-version: ${{ matrix.python }}
+      - run: uv sync --locked
+      - name: Record measurement environment
+        run: uv run python -m tests.benchmarks.metadata benchmark-artifacts/environment.json --instrument walltime
+      - name: Measure native elapsed time
+        run: >-
+          uv run pytest tests/benchmarks --codspeed --codspeed-mode walltime
+          -p no:codeflash-benchmark -m "$BENCHMARK_SELECTION"
+          --codspeed-warmup-time 0.1 --codspeed-max-time 1 --codspeed-max-rounds 30
+          --junitxml=benchmark-artifacts/results.xml -o junit_family=legacy
+      - name: Explain the measurement
+        if: always()
+        run: |
+          echo '### Native wall-clock benchmarks' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Measured serially on the dedicated Mac. Compare only matching workload, Python, dependency and hardware identities. Results are advisory; no regression threshold is enforced.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The artifact contains raw CodSpeed measurements, environment metadata, correctness results and HTTP response byte counts.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload measurements and diagnostics
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-walltime-py${{ matrix.python }}
+          path: |
+            strawberry/benchmark-artifacts/
+            strawberry/.codspeed/results_*.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 90

@@ -2,3 +2,5 @@
 env/
 strawberry-graphql/
 __pycache__
+strawberry/
+node_modules/
