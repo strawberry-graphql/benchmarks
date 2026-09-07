@@ -234,3 +234,27 @@ def test_invalid_measurements_never_become_points(source, report, tmp_path, inva
         import_run(report, source, directory, ref=revision, include_stress=True)
     assert not (report / "results").exists()
     assert read_records(report) == []
+
+
+def test_fixed_harness_preserves_native_results_for_the_same_commit(
+    source, report, tmp_path
+):
+    revision = commit(source)
+    native = artifact(tmp_path, revision)
+    historical = artifact(tmp_path, revision, median=2_000_000)
+    metadata = historical / "environment.json"
+    environment = json.loads(metadata.read_text())
+    environment.update(
+        harness_revision=revision, measurement_profile="fixed-harness-v1"
+    )
+    metadata.write_text(json.dumps(environment))
+    for directory in (native, historical):
+        import_run(report, source, directory, ref=revision, include_stress=True)
+    assert len(read_records(report)) == 2
+    publish(report, source)
+    index = json.loads((report / "html" / "index.json").read_text())
+    assert set(index["params"]["measurement_profile"]) == {None, "fixed-harness-v1"}
+    graphs = list(
+        (report / "html" / "graphs").glob("**/test_example.test_query[[]100].json")
+    )
+    assert len(graphs) == 3  # summary plus two separately selectable profiles
