@@ -30,7 +30,6 @@ const boxes = new Map(
 const context = {
   Date,
   AbortSignal,
-  location: { hash: "", replace() {} },
   document: {
     getElementById: (id) => boxes.get(id),
     createElement: () => new Element(),
@@ -86,19 +85,7 @@ vm.runInContext(source, context);
     boxes.get("walltime").text(),
     /Strawberry revision is recorded inside each artifact/,
   );
-  let redirected;
-  context.location = {
-    hash: "#benchmarks.ExecuteSync.time_execute",
-    replace(value) {
-      redirected = value;
-    },
-  };
-  vm.runInContext(
-    'if (location.hash) location.replace("history.html" + location.hash);',
-    context,
-  );
-  assert.equal(redirected, "history.html#benchmarks.ExecuteSync.time_execute");
   console.log(
-    "PASS: failure, stale success, unavailable API, ASV/native separation, source identity and legacy hash redirects",
+    "PASS: failure, stale success, unavailable API, ASV/native separation and source identity",
   );
 })();

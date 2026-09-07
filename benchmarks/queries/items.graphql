@@ -1,6 +1,0 @@
-query Items($count: Int!) {
-  items(count: $count) {
-    name
-    index
-  }
-}

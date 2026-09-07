@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Strawberry GraphQL performance: current CPU, elapsed-time and memory benchmarks, plus historical ASV results."
+      content="Strawberry GraphQL performance: CPU, elapsed-time and memory benchmarks on the latest stable Python."
     />
     <title>Strawberry performance</title>
     <style>
@@ -17,7 +17,6 @@
         --line: #e6d9d8;
         --card: #fff;
         --accent: #c83256;
-        --soft: #fae6ea;
       }
       * {
         box-sizing: border-box;
@@ -128,21 +127,6 @@
         text-transform: uppercase;
         color: var(--accent);
       }
-      .history {
-        margin-top: 36px;
-        padding: 28px;
-        border-radius: 18px;
-        background: var(--soft);
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 28px;
-      }
-      .history h2 {
-        margin: 0;
-      }
-      .history p {
-        margin: 0 0 12px;
-      }
       .method {
         margin-top: 54px;
         display: grid;
@@ -179,7 +163,6 @@
           margin-bottom: 38px;
         }
         .grid,
-        .history,
         .method {
           grid-template-columns: 1fr;
         }
@@ -201,7 +184,6 @@
           --line: #44343c;
           --card: #231e23;
           --accent: #ff91ac;
-          --soft: #35222b;
         }
       }
     </style>
@@ -221,7 +203,8 @@
         <h1>Know what<br />gets faster.</h1>
         <p class="intro">
           Follow Strawberry’s performance through CPU work, elapsed time and
-          memory. Every number belongs to a workload and an environment.
+          memory on Python 3.14.7. Every number belongs to a workload and an
+          environment.
         </p>
       </header>
       <section class="grid" aria-label="Current measurements">
@@ -281,24 +264,6 @@
           workflow status and measurements.
         </p></noscript
       >
-      <section class="history">
-        <div>
-          <span class="tag">Preserved ASV archive</span>
-          <h2>The longer view</h2>
-        </div>
-        <div>
-          <p>
-            The published archive contains sampled commits through April 6,
-            2026. These measurements use older workloads and environments.
-          </p>
-          <p>
-            The legacy directive workload can return validation errors on
-            current Strawberry. Its historical timings should not be treated as
-            verified execution improvements.
-          </p>
-          <a href="history.html">Open historical charts →</a>
-        </div>
-      </section>
       <section class="method">
         <h2>Read the change,<br />not just the number.</h2>
         <div>
@@ -307,10 +272,7 @@
               Check the commit, Python build, dependencies, cache state and
               measured amount of work.
             </li>
-            <li>
-              A changed workload starts a new baseline. Historical ASV and
-              current results are separate series.
-            </li>
+            <li>A changed workload or Python version starts a new baseline.</li>
             <li>
               Compare CPU estimates, native timings and allocation metrics
               within their own instruments.
@@ -334,8 +296,6 @@
       >
     </footer>
     <script>
-      // Preserve the old ASV hash links without moving its data or scripts.
-      if (location.hash) location.replace("history.html" + location.hash);
       const sources = [
         { id: "cpu", repo: "strawberry", workflow: "test.yml", maxAge: 14 },
         {
