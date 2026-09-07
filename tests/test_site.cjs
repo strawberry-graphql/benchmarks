@@ -3,7 +3,7 @@ const vm = require("node:vm");
 const assert = require("node:assert/strict");
 const path = require("node:path");
 const html = fs.readFileSync(
-  path.join(__dirname, "../html/index.html"),
+  path.join(__dirname, "../site/about.html"),
   "utf8",
 );
 const source = html

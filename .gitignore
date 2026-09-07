@@ -4,3 +4,8 @@ strawberry-graphql/
 __pycache__
 strawberry/
 node_modules/
+.venv/
+.asv/
+.pytest_cache/
+.ruff_cache/
+benchmark-artifacts/

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "project": "Strawberry native performance",
+  "project_url": "about.html",
+  "show_commit_url": "https://github.com/strawberry-graphql/strawberry/commit/",
+  "repo": "strawberry",
+  "branches": ["main"],
+  "results_dir": "results",
+  "html_dir": "html",
+  "pythons": ["3.14.7"]
+}

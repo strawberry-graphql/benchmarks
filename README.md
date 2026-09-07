@@ -1,68 +1,86 @@
 # Strawberry performance reporting
 
-Current workloads live in
+[**speed.strawberry.rocks**](https://speed.strawberry.rocks/) keeps ASV charts for
+Strawberry's native elapsed times, including future stable releases. The old
+benchmark history is reset; new results start with the modern suite merged on
+September 7, 2026. Earlier data is available in Git history.
+
+## One measurement suite, retained charts
+
+Workloads and correctness assertions live in
 [strawberry/tests/benchmarks](https://github.com/strawberry-graphql/strawberry/tree/main/tests/benchmarks).
-This repository owns the public entry point and native measurement workflow.
+We run that pytest-codspeed suite in native walltime mode and import its median
+nanoseconds as seconds per callback. ASV 0.6.6 publishes the static charts; it does
+not build Strawberry or run a second timing harness. CPU simulation and memory
+checks continue in Strawberry's CodSpeed integration.
 
-## Public site
+Only clean, matching source revisions with a complete set of passing measured
+tests are imported. Missing, skipped, unsuccessful and non-finite measurements are
+rejected. Benchmark medians are not request p95/p99 latency. The raw export has
+aggregate statistics, so the importer does not invent samples or confidence
+intervals.
 
-`html/index.html` is the public overview for `speed.strawberry.rocks`. It links to
-CPU, native and memory results and reads public GitHub Actions status on load.
-Unsuccessful runs, unavailable status, missing successful runs and stale results are shown
-explicitly. Dates describe workflow completion, not an inferred speedup. The
-native workflow's GitHub commit belongs to this reporting repository; the actual
-Strawberry revision is recorded in each measurement artifact.
+Chart series separate workload hashes, Python builds, dependencies, runner, CPU
+and operating system. Strawberry's own package version is excluded from the
+dependency identity so successive releases can share a series. Environment
+records retain the full dependency list, source revision and lockfile hash.
+A changed workload or environment starts a separate baseline.
 
-The obsolete ASV harness, stored runs, generated charts and vendored assets are
-removed. Their earlier versions are available in Git history. The public site only
-links current measurement sources.
+## Automatic release coverage
 
-To preview locally:
+`.github/workflows/asv.yml`, named **Native benchmarks**, runs daily on the
+existing dedicated `self-hosted, macOS, ARM64` runner. It discovers stable
+`MAJOR.MINOR.PATCH` tags descended from the benchmark modernization commit and
+measures unrecorded releases, oldest first, up to five per run. Any backlog is
+picked up on subsequent runs. Prereleases and the obsolete historical releases
+are excluded. It then measures main if needed. Unsuccessful revisions stay pending.
+Release runs always include stress sizes; main includes them on Sundays or on
+request. A release whose commit already has full measurements reuses those
+measurements and gains its release label during publication.
+
+Python **3.14.7** is pinned, matching the CPU and memory jobs and the latest
+stable Python as of September 7, 2026. Each source revision installs its locked
+dependencies. Runs are serial, with a global concurrency group and a 45-minute
+job timeout. Use an otherwise idle runner. Measurements are advisory; no
+regression threshold is enforced.
+
+A manual dispatch with an empty `strawberry_ref` runs the same catch-up logic.
+To remeasure a specific merged revision, supply its ref and select stress sizes
+if needed. Only merged commits containing the modern suite are accepted. Never
+add pull-request triggers to this persistent runner.
+
+## Retained data and publication
+
+- `results/`: ASV timing history, benchmark catalog and machine information.
+- `records/`: source, workload and environment provenance for each run identity.
+- `html/`: generated ASV dashboard, graphs, metadata and the methodology page.
+- `site/about.html`: editable methodology, CPU/memory links and live workflow status.
+
+After measurement, the workflow regenerates ASV charts from all retained results.
+On this repository's **main branch only**, it commits results, records and the
+generated site. The existing Vercel deployment serves `html/` at the existing
+domain. Branch validation uploads artifacts without changing production. No DNS
+or hosting migration is required. Successful measurements are retained even if
+another revision is unsuccessful, and the job still reports that error.
+
+Raw CodSpeed JSON and JUnit diagnostics are attached to each workflow run for
+90 days. Normalized timing history and environment records are retained in Git.
+Old results cannot be recreated by the new workflow because its release cutoff
+excludes them. The first new data point is a baseline; trends appear as further
+commits and releases are measured.
+
+## Local development
 
 ```sh
+uv sync --locked
+uv run pytest
+node tests/test_site.cjs
+# A full Strawberry clone with main and release tags is needed to publish:
+uv run python -m scripts.dashboard publish --source /path/to/strawberry
 python3 -m http.server 8765 --directory html --bind 127.0.0.1
 ```
 
-Opening the page does not require credentials. If GitHub's public API is
-unavailable or rate-limited, the workflow links still work. A successful workflow
-is not a claim that performance improved.
-
-## Native measurements
-
-`.github/workflows/asv.yml` (named **Native benchmarks** in Actions) runs only scheduled or maintainer-dispatched code,
-on the existing `self-hosted, macOS, ARM64` runner. It checks out Strawberry's main
-branch (or an explicitly requested trusted ref), installs its locked environment,
-and runs pytest-codspeed in native walltime mode. No new hosting service is needed.
-Do not add pull-request triggers to this persistent runner.
-
-The job uses Python 3.14.7, the [latest stable release](https://www.python.org/getit/source/)
-as of September 7, 2026, matching the CPU and memory jobs. The exact version is
-pinned for reproducibility; Python upgrades start a new baseline. A global
-concurrency group serializes runs with a 45-minute job timeout.
-Daily runs exclude stress sizes; Sunday/manual stress runs
-include them. Within each job, benchmarks run in one process without xdist.
-Use an otherwise idle runner and compare matching environment/workload identities.
-
-Artifacts retained for 90 days include native CodSpeed JSON, measurement metadata,
-JUnit correctness results, and HTTP response byte counts. Download the artifacts
-from the workflow run. These native measurements are advisory; no threshold or
-cross-machine comparison is enforced. CPU and memory measurements stay in the
-main repository's CodSpeed integration.
-
-## Rollout order
-
-Merge the main repository's benchmark modernization first: the native workflow
-requires `tests/benchmarks/metadata.py` and the version-2 workload markers. Before
-merging this reporting change, dispatch the native workflow against that merged
-revision (or the trusted implementation branch) and verify the job and its
-artifacts. Verify the site's overview and measurement links using the existing
-static-site deployment pipeline; this change does not change DNS or hosting.
-
-The existing workflow filename, `asv.yml`, is retained so maintainers can dispatch
-this branch before merging it. Its new implementation replaces the failing ASV
-build/publish cycle with native measurements. The old schedule stays on main
-until this reporting change is merged. After merge no ASV publish step can
-regenerate the removed results or overwrite the overview.
-
-Run the status checks with `node tests/test_site.cjs`. These use a
-small DOM stub and do not replace a visual browser review.
+The tests exercise release catch-up, invalid-result rejection, environment separation
+and real ASV publication with two commits. Test fixtures are never published as
+production measurements. The methodology page handles unavailable or stale
+GitHub status explicitly; a successful workflow is not a performance improvement.
