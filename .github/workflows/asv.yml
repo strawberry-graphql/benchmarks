@@ -1,48 +1,135 @@
-name: "ASV Bot"
+name: Native benchmarks
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: "53 17 * * *"
+    - cron: "53 17 * * 1-6"
+    - cron: "53 17 * * 0"
   workflow_dispatch:
     inputs:
-      number:
-        description: 'Number of commits to benchmark'
-        required: false
+      strawberry_ref:
+        description: Merged Strawberry ref; leave empty to catch up releases and main
+        default: ""
+        type: string
+      include_stress:
+        description: Include the largest main workloads (releases always include them)
+        default: false
+        type: boolean
+      history_commits:
+        description: Historical window size (0 for normal runs, at most 100)
+        default: 0
+        type: number
+      history_ref:
+        description: End of the historical window; uses a fixed modern harness
+        default: main
+        type: string
+      history_batch:
+        description: Zero-based batch of ten; use the backfill workflow for all batches
+        default: 0
+        type: number
+  workflow_call:
+    inputs:
+      history_commits:
+        default: 0
+        type: number
+      history_ref:
+        default: main
+        type: string
+      history_batch:
+        default: 0
+        type: number
+      include_stress:
+        default: false
+        type: boolean
+      strawberry_ref:
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-benchmarks
+  cancel-in-progress: false
 
 jobs:
-  benchmark:
-    name: "Run benchmarks"
-    runs-on: self-hosted
-
-    concurrency:
-      group: ${{ github.actor }}-asv
-      cancel-in-progress: false
-
+  walltime:
+    name: Native walltime and charts (Python 3.14.7)
+    runs-on: [self-hosted, macOS, ARM64]
+    timeout-minutes: 45
+    permissions:
+      contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # Each serial backfill batch must see the preceding batch's saved data.
+          ref: ${{ github.ref }}
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: strawberry-graphql/strawberry
+          ref: main
+          path: strawberry
           fetch-depth: 0
-
-      - name: Run benchmarks
-        run: |
-          ~/.local/bin/rtx activate bash
-          ~/.local/bin/asv run HEAD~10..HEAD
-        if: "${{ github.event.inputs.number == '' }}"
-
-      - name: Run benchmarks
-        run: |
-          ~/.local/bin/rtx activate bash
-          ~/.local/bin/asv run HEAD~${{ github.event.inputs.number }}..HEAD
-        if: "${{ github.event.inputs.number != '' }}"
-
-      - name: Publish benchmarks
-        run: |
-          ~/.local/bin/asv publish
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
-          commit_options: '--no-verify --no-gpg-sign'
+          enable-cache: true
+          cache-dependency-glob: |
+            uv.lock
+            strawberry/uv.lock
+          python-version: "3.14.7"
+      - run: uv sync --locked
+      - name: Measure pending releases and main
+        id: measure
+        continue-on-error: true
+        env:
+          STRAWBERRY_REF: ${{ inputs.strawberry_ref }}
+          INCLUDE_STRESS: ${{ inputs.include_stress || github.event.schedule == '53 17 * * 0' }}
+          HISTORY_COMMITS: ${{ inputs.history_commits || 0 }}
+          HISTORY_REF: ${{ inputs.history_ref }}
+          HISTORY_BATCH: ${{ inputs.history_batch || 0 }}
+        run: |
+          if [ "$HISTORY_COMMITS" != 0 ]; then
+            uv run --no-sync python -m scripts.backfill run --source strawberry
+          else
+            uv run --no-sync python -m scripts.run_benchmarks --source strawberry
+          fi
+      - name: Generate ASV charts from verified measurements
+        id: publish
+        if: ${{ !cancelled() && steps.measure.outcome != 'skipped' }}
+        run: uv run --no-sync python -m scripts.dashboard publish --source strawberry
+      - name: Upload measurements, diagnostics and dashboard
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-walltime-py3.14.7${{ inputs.history_commits > 0 && format('-history-{0}', inputs.history_batch) || '' }}
+          path: |
+            benchmark-artifacts/
+            results/
+            records/
+            html/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Retain results and publish through the existing site deployment
+        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && steps.publish.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add results records html
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -c commit.gpgsign=false commit -m 'Update native benchmark charts'
+          auth_header="$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')"
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth_header" push origin HEAD:main
+      - name: Report measurement outcome
+        if: always()
+        env:
+          MEASUREMENT_OUTCOME: ${{ steps.measure.outcome }}
+        run: |
+          echo '### Native wall-clock charts' >> "$GITHUB_STEP_SUMMARY"
+          echo 'ASV charts show median seconds per callback. Compare matching workload, Python, dependencies and hardware. Raw measurements and correctness diagnostics are attached.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Only runs on this repository’s main branch commit the generated site. Branch validation produces artifacts without publishing to production.' >> "$GITHUB_STEP_SUMMARY"
+          test "$MEASUREMENT_OUTCOME" = success

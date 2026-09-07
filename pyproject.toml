@@ -1,0 +1,18 @@
+[project]
+name = "strawberry-performance-reporting"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = ["asv==0.6.6"]
+
+[dependency-groups]
+dev = ["pytest>=9.1.1", "ruff==0.16.0"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py314"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

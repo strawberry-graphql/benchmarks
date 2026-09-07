@@ -1,30 +1,22 @@
+exclude: ^(html|results)/
+
 repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.0
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
   - repo: https://github.com/patrick91/pre-commit-alex
     rev: aa5da9e54b92ab7284feddeaf52edf14b1690de3
     hooks:
       - id: alex
-        exclude: ^(html|results)
+        exclude: ^html
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
       - id: trailing-whitespace
-        exclude: ^(html|results)
       - id: check-merge-conflict
-        exclude: ^(html|results)
       - id: end-of-file-fixer
-        exclude: ^(html|results)
-      - id: check-toml
-        exclude: ^(html|results)
-
-  - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.5.1
-    hooks:
-      - id: black
-        exclude: ^(html|results)
-
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.17
-    hooks:
-      - id: ruff
-        exclude: ^tests/codegen/snapshots/python/

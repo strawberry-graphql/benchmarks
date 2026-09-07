@@ -1,0 +1,83 @@
+name: Backfill benchmark history
+
+on:
+  workflow_dispatch:
+    inputs:
+      commits:
+        description: Number of mainline commits, including the end revision (1-100)
+        default: 100
+        type: number
+      end_revision:
+        description: Newest Strawberry commit; resolved once before batching
+        default: main
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: benchmark-history-backfill
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      revision: ${{ steps.plan.outputs.revision }}
+      batches: ${{ steps.plan.outputs.batches }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: strawberry-graphql/strawberry
+          ref: main
+          path: strawberry
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          python-version: "3.14.7"
+      - id: plan
+        env:
+          HISTORY_COMMITS: ${{ inputs.commits }}
+          HISTORY_REF: ${{ inputs.end_revision }}
+        run: uv run --locked python -m scripts.backfill plan --source strawberry
+  measure:
+    needs: plan
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        batch: ${{ fromJSON(needs.plan.outputs.batches) }}
+    permissions:
+      contents: write
+    uses: ./.github/workflows/asv.yml
+    with:
+      history_commits: ${{ inputs.commits }}
+      history_ref: ${{ needs.plan.outputs.revision }}
+      history_batch: ${{ matrix.batch }}
+  verify:
+    if: ${{ !cancelled() && needs.plan.result == 'success' }}
+    needs: [plan, measure]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.ref }}
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: strawberry-graphql/strawberry
+          ref: main
+          path: strawberry
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          python-version: "3.14.7"
+      - env:
+          HISTORY_COMMITS: ${{ inputs.commits }}
+          HISTORY_REF: ${{ needs.plan.outputs.revision }}
+        run: uv run --locked python -m scripts.backfill verify --source strawberry
