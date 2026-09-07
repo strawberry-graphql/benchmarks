@@ -1,4 +1,4 @@
-exclude: ^html/
+exclude: ^(html|results)/
 
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
