@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Strawberry GraphQL performance: CPU, elapsed-time and memory benchmarks on the latest stable Python."
+    />
+    <title>Strawberry performance</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fffaf7;
+        --ink: #262127;
+        --muted: #6e616b;
+        --line: #e6d9d8;
+        --card: #fff;
+        --accent: #c83256;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.6 system-ui,
+          -apple-system,
+          sans-serif;
+      }
+      main,
+      footer {
+        max-width: 1080px;
+        margin: auto;
+        padding: 32px 24px;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 4px;
+      }
+      a:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 5px;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-bottom: 64px;
+      }
+      .brand {
+        color: var(--ink);
+        font-weight: 750;
+        text-decoration: none;
+      }
+      h1 {
+        font-size: clamp(40px, 7vw, 76px);
+        line-height: 1.06;
+        letter-spacing: -0.055em;
+        max-width: 800px;
+        margin: 20px 0;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.25;
+        letter-spacing: -0.025em;
+      }
+      p {
+        max-width: 730px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.13em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .intro {
+        font-size: 20px;
+        color: var(--muted);
+        margin-bottom: 44px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--card);
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .card h2,
+      .card p {
+        margin: 0;
+      }
+      .card .description {
+        color: var(--muted);
+        flex: 1;
+      }
+      .status {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+        font-size: 14px;
+        min-height: 95px;
+      }
+      .status p + p {
+        margin-top: 6px;
+      }
+      .status strong {
+        font-weight: 650;
+      }
+      .status .detail {
+        color: var(--muted);
+      }
+      .tag {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .method {
+        margin-top: 54px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 28px;
+      }
+      .method h2 {
+        margin: 0;
+      }
+      .method ul {
+        padding-left: 20px;
+        margin-top: 0;
+      }
+      .method li {
+        margin-bottom: 12px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: 35px;
+        padding-bottom: 50px;
+      }
+      code {
+        font-size: 0.9em;
+      }
+      small {
+        display: block;
+        color: var(--muted);
+        margin-top: 18px;
+      }
+      @media (max-width: 760px) {
+        nav {
+          margin-bottom: 38px;
+        }
+        .grid,
+        .method {
+          grid-template-columns: 1fr;
+        }
+        .card {
+          gap: 12px;
+        }
+        .status {
+          min-height: 0;
+        }
+        .intro {
+          font-size: 18px;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #191619;
+          --ink: #f7edf1;
+          --muted: #baadb5;
+          --line: #44343c;
+          --card: #231e23;
+          --accent: #ff91ac;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav aria-label="Main navigation">
+        <a class="brand" href="https://strawberry.rocks"
+          >🍓 Strawberry GraphQL</a
+        ><a href="index.html">Performance charts →</a><a
+          href="https://github.com/strawberry-graphql/strawberry/tree/main/tests/benchmarks"
+          >Benchmark source ↗</a
+        >
+      </nav>
+      <header>
+        <div class="eyebrow">Performance, with context</div>
+        <h1>Know what<br />gets faster.</h1>
+        <p class="intro">
+          Follow Strawberry’s performance through CPU work, elapsed time and
+          memory on Python 3.14.7. Every number belongs to a workload and an
+          environment. The ASV charts retain native timings for new releases,
+          starting with the modern benchmark suite in September 2026.
+        </p>
+      </header>
+      <section class="grid" aria-label="Current measurements">
+        <article class="card">
+          <span class="tag">Every pull request</span>
+          <h2>CPU regression checks</h2>
+          <p class="description">
+            CodSpeed simulation tracks changes in CPU work. Its estimated time
+            is not measured HTTP latency.
+          </p>
+          <a href="https://codspeed.io/strawberry-graphql/strawberry"
+            >Explore CPU results ↗</a
+          >
+          <div id="cpu" class="status" aria-live="polite">
+            <p>Checking workflow status…</p>
+          </div>
+        </article>
+        <article class="card">
+          <span class="tag">Scheduled · dedicated Mac</span>
+          <h2>Elapsed time</h2>
+          <p class="description">
+            Native measurements include execution, HTTP responses and startup.
+            Charts show median seconds per callback. Compare matching Python
+            versions and environments.
+          </p>
+          <a href="index.html">Explore release charts →</a>
+          <a
+            href="https://github.com/strawberry-graphql/benchmarks/actions/workflows/asv.yml"
+            >View runs and raw measurements ↗</a
+          >
+          <div id="walltime" class="status" aria-live="polite">
+            <p>Checking workflow status…</p>
+          </div>
+        </article>
+        <article class="card">
+          <span class="tag">Scheduled · Linux</span>
+          <h2>Memory</h2>
+          <p class="description">
+            Track allocations for schema building, larger results, parser cache
+            churn and subscription cleanup.
+          </p>
+          <a
+            href="https://github.com/strawberry-graphql/strawberry/actions/workflows/benchmark-memory.yml"
+            >View memory runs ↗</a
+          >
+          <div id="memory" class="status" aria-live="polite">
+            <p>Checking workflow status…</p>
+          </div>
+        </article>
+      </section>
+      <small
+        >Run status comes from GitHub Actions. A successful workflow is not a
+        claim of improved performance. Unavailable status is shown
+        explicitly.</small
+      >
+      <noscript
+        ><p>
+          JavaScript is disabled. Use the links above to check the latest
+          workflow status and measurements.
+        </p></noscript
+      >
+      <section class="method">
+        <h2>Read the change,<br />not just the number.</h2>
+        <div>
+          <ul>
+            <li>
+              Check the commit, Python build, dependencies, cache state and
+              measured amount of work.
+            </li>
+            <li>A changed workload or Python version starts a new baseline.</li>
+            <li>
+              Daily runs track main and catch up unmeasured stable releases.
+              Release runs include the largest workloads. Old benchmark history
+              was reset; each new successful measurement is retained.
+            </li>
+            <li>
+              Compare CPU estimates, native timings and allocation metrics
+              within their own instruments.
+            </li>
+            <li>
+              Request latency percentiles require request samples; benchmark
+              rounds are not p95 or p99 latency.
+            </li>
+          </ul>
+          <a
+            href="https://github.com/strawberry-graphql/strawberry/blob/main/tests/benchmarks/README.md"
+            >Methodology and local reproduction →</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer>
+      Made for people building GraphQL APIs.
+      <a href="https://github.com/strawberry-graphql/benchmarks"
+        >Source and reporting</a
+      >
+    </footer>
+    <script>
+      const sources = [
+        { id: "cpu", repo: "strawberry", workflow: "test.yml", maxAge: 14 },
+        {
+          id: "walltime",
+          repo: "benchmarks",
+          workflow: "asv.yml",
+          maxAge: 2,
+        },
+        {
+          id: "memory",
+          repo: "strawberry",
+          workflow: "benchmark-memory.yml",
+          maxAge: 2,
+        },
+      ];
+      function line(parent, text, className) {
+        const p = document.createElement("p");
+        p.textContent = text;
+        if (className) p.className = className;
+        parent.append(p);
+      }
+      async function showStatus(source) {
+        const box = document.getElementById(source.id);
+        try {
+          const response = await fetch(
+            `https://api.github.com/repos/strawberry-graphql/${source.repo}/actions/workflows/${source.workflow}/runs?branch=main&per_page=20`,
+            {
+              headers: { Accept: "application/vnd.github+json" },
+              signal: AbortSignal.timeout(10000),
+            },
+          );
+          if (!response.ok) throw new Error("Status unavailable");
+          const payload = await response.json();
+          const runs = Array.isArray(payload.workflow_runs)
+            ? payload.workflow_runs.filter(
+                (run) =>
+                  source.id !== "walltime" || run.name === "Native benchmarks",
+              )
+            : [];
+          if (!Array.isArray(runs) || !runs.length)
+            throw new Error("No runs available");
+          box.replaceChildren();
+          const latest = runs[0];
+          line(
+            box,
+            `Latest run: ${latest.status === "completed" ? latest.conclusion : latest.status}`,
+          );
+          const success = runs.find(
+            (run) => run.status === "completed" && run.conclusion === "success",
+          );
+          if (!success) {
+            line(box, "No successful run in the latest 20 runs.", "detail");
+            return;
+          }
+          const age = (Date.now() - Date.parse(success.updated_at)) / 86400000;
+          const link = document.createElement("a");
+          link.href = `https://github.com/strawberry-graphql/${source.repo}/actions/runs/${success.id}`;
+          link.textContent = `Last successful workflow · ${success.head_sha.slice(0, 8)}`;
+          box.append(link);
+          line(
+            box,
+            `${new Date(success.updated_at).toISOString().slice(0, 16).replace("T", " ")} UTC${age > source.maxAge ? " · stale" : ""}`,
+            "detail",
+          );
+          if (source.id === "walltime")
+            line(
+              box,
+              "The Strawberry revision is recorded inside each artifact.",
+              "detail",
+            );
+        } catch {
+          box.replaceChildren();
+          line(box, "Live status unavailable.");
+          line(
+            box,
+            "Open the workflow link to verify its latest result.",
+            "detail",
+          );
+        }
+      }
+      sources.forEach(showStatus);
+    </script>
+  </body>
+</html>

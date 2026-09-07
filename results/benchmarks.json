@@ -1,0 +1,732 @@
+{
+    "test_arguments.test_convert_argument_large_list_v2[1048576]": {
+        "code": "# pytest node: tests/benchmarks/test_arguments.py::test_convert_argument_large_list_v2[1048576]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_arguments.test_convert_argument_large_list_v2[1048576]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_arguments.test_convert_argument_large_list_v2[16384]": {
+        "code": "# pytest node: tests/benchmarks/test_arguments.py::test_convert_argument_large_list_v2[16384]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_arguments.test_convert_argument_large_list_v2[16384]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_arguments.test_convert_argument_large_list_v2[262144]": {
+        "code": "# pytest node: tests/benchmarks/test_arguments.py::test_convert_argument_large_list_v2[262144]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_arguments.test_convert_argument_large_list_v2[262144]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_arguments.test_convert_argument_large_list_v2[4194304]": {
+        "code": "# pytest node: tests/benchmarks/test_arguments.py::test_convert_argument_large_list_v2[4194304]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_arguments.test_convert_argument_large_list_v2[4194304]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_arguments.test_convert_argument_large_list_v2[65536]": {
+        "code": "# pytest node: tests/benchmarks/test_arguments.py::test_convert_argument_large_list_v2[65536]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_arguments.test_convert_argument_large_list_v2[65536]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_cache_churn.test_parser_cache_churn": {
+        "code": "# pytest node: tests/benchmarks/test_cache_churn.py::test_parser_cache_churn\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_cache_churn.test_parser_cache_churn",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_complex_schema.test_execute_complex_schema_v2[50]": {
+        "code": "# pytest node: tests/benchmarks/test_complex_schema.py::test_execute_complex_schema_v2[50]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_complex_schema.test_execute_complex_schema_v2[50]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_batch_v2[False-10000]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_batch_v2[False-10000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_batch_v2[False-10000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_batch_v2[False-100]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_batch_v2[False-100]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_batch_v2[False-100]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_batch_v2[False-10]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_batch_v2[False-10]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_batch_v2[False-10]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_batch_v2[False-1]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_batch_v2[False-1]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_batch_v2[False-1]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_batch_v2[True-10000]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_batch_v2[True-10000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_batch_v2[True-10000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_batch_v2[True-100]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_batch_v2[True-100]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_batch_v2[True-100]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_batch_v2[True-10]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_batch_v2[True-10]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_batch_v2[True-10]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_batch_v2[True-1]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_batch_v2[True-1]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_batch_v2[True-1]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_cache_semantics[duplicate_keys-cached]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_cache_semantics[duplicate_keys-cached]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_cache_semantics[duplicate_keys-cached]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_cache_semantics[duplicate_keys-uncached]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_cache_semantics[duplicate_keys-uncached]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_cache_semantics[duplicate_keys-uncached]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_cache_semantics[second_batch-cached]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_cache_semantics[second_batch-cached]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_cache_semantics[second_batch-cached]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_dataloader.test_dataloader_cache_semantics[second_batch-uncached]": {
+        "code": "# pytest node: tests/benchmarks/test_dataloader.py::test_dataloader_cache_semantics[second_batch-uncached]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_dataloader.test_dataloader_cache_semantics[second_batch-uncached]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_exception_handlers.test_handled_union_field": {
+        "code": "# pytest node: tests/benchmarks/test_exception_handlers.py::test_handled_union_field\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_exception_handlers.test_handled_union_field",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_exception_handlers.test_plain_resolver_field[no_handlers]": {
+        "code": "# pytest node: tests/benchmarks/test_exception_handlers.py::test_plain_resolver_field[no_handlers]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_exception_handlers.test_plain_resolver_field[no_handlers]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_exception_handlers.test_plain_resolver_field[with_handlers]": {
+        "code": "# pytest node: tests/benchmarks/test_exception_handlers.py::test_plain_resolver_field[with_handlers]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_exception_handlers.test_plain_resolver_field[with_handlers]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute.test_execute_v2": {
+        "code": "# pytest node: tests/benchmarks/test_execute.py::test_execute_v2\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute.test_execute_v2",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute.test_interface_performance_v2[16]": {
+        "code": "# pytest node: tests/benchmarks/test_execute.py::test_interface_performance_v2[16]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute.test_interface_performance_v2[16]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute.test_interface_performance_v2[1]": {
+        "code": "# pytest node: tests/benchmarks/test_execute.py::test_interface_performance_v2[1]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute.test_interface_performance_v2[1]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute.test_interface_performance_v2[256]": {
+        "code": "# pytest node: tests/benchmarks/test_execute.py::test_interface_performance_v2[256]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute.test_interface_performance_v2[256]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute.test_interface_performance_v2[4096]": {
+        "code": "# pytest node: tests/benchmarks/test_execute.py::test_interface_performance_v2[4096]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute.test_interface_performance_v2[4096]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_sync.test_execute_basic": {
+        "code": "# pytest node: tests/benchmarks/test_execute_sync.py::test_execute_basic\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_sync.test_execute_basic",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_sync.test_execute_with_1000_items": {
+        "code": "# pytest node: tests/benchmarks/test_execute_sync.py::test_execute_with_1000_items\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_sync.test_execute_with_1000_items",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_sync.test_execute_with_100_items": {
+        "code": "# pytest node: tests/benchmarks/test_execute_sync.py::test_execute_with_100_items\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_sync.test_execute_with_100_items",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_sync.test_execute_with_10_items": {
+        "code": "# pytest node: tests/benchmarks/test_execute_sync.py::test_execute_with_10_items\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_sync.test_execute_with_10_items",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_sync.test_execute_with_many_fields": {
+        "code": "# pytest node: tests/benchmarks/test_execute_sync.py::test_execute_with_many_fields\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_sync.test_execute_with_many_fields",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_sync.test_execute_with_many_fields_and_directives": {
+        "code": "# pytest node: tests/benchmarks/test_execute_sync.py::test_execute_with_many_fields_and_directives\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_sync.test_execute_with_many_fields_and_directives",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_with_extensions.test_execute_v2[with_no_extensions-items_10000]": {
+        "code": "# pytest node: tests/benchmarks/test_execute_with_extensions.py::test_execute_v2[with_no_extensions-items_10000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_with_extensions.test_execute_v2[with_no_extensions-items_10000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_with_extensions.test_execute_v2[with_no_extensions-items_1000]": {
+        "code": "# pytest node: tests/benchmarks/test_execute_with_extensions.py::test_execute_v2[with_no_extensions-items_1000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_with_extensions.test_execute_v2[with_no_extensions-items_1000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_with_extensions.test_execute_v2[with_resolveextension-items_10000]": {
+        "code": "# pytest node: tests/benchmarks/test_execute_with_extensions.py::test_execute_v2[with_resolveextension-items_10000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_with_extensions.test_execute_v2[with_resolveextension-items_10000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_with_extensions.test_execute_v2[with_resolveextension-items_1000]": {
+        "code": "# pytest node: tests/benchmarks/test_execute_with_extensions.py::test_execute_v2[with_resolveextension-items_1000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_with_extensions.test_execute_v2[with_resolveextension-items_1000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_with_extensions.test_execute_v2[with_simpleextension-items_10000]": {
+        "code": "# pytest node: tests/benchmarks/test_execute_with_extensions.py::test_execute_v2[with_simpleextension-items_10000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_with_extensions.test_execute_v2[with_simpleextension-items_10000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execute_with_extensions.test_execute_v2[with_simpleextension-items_1000]": {
+        "code": "# pytest node: tests/benchmarks/test_execute_with_extensions.py::test_execute_v2[with_simpleextension-items_1000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execute_with_extensions.test_execute_v2[with_simpleextension-items_1000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execution_modes.test_matched_resolvers[async-1000]": {
+        "code": "# pytest node: tests/benchmarks/test_execution_modes.py::test_matched_resolvers[async-1000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execution_modes.test_matched_resolvers[async-1000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execution_modes.test_matched_resolvers[async-1]": {
+        "code": "# pytest node: tests/benchmarks/test_execution_modes.py::test_matched_resolvers[async-1]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execution_modes.test_matched_resolvers[async-1]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execution_modes.test_matched_resolvers[sync-1000]": {
+        "code": "# pytest node: tests/benchmarks/test_execution_modes.py::test_matched_resolvers[sync-1000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execution_modes.test_matched_resolvers[sync-1000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_execution_modes.test_matched_resolvers[sync-1]": {
+        "code": "# pytest node: tests/benchmarks/test_execution_modes.py::test_matched_resolvers[sync-1]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_execution_modes.test_matched_resolvers[sync-1]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_federation_relay.test_federation_entities[100]": {
+        "code": "# pytest node: tests/benchmarks/test_federation_relay.py::test_federation_entities[100]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_federation_relay.test_federation_entities[100]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_federation_relay.test_federation_entities[1]": {
+        "code": "# pytest node: tests/benchmarks/test_federation_relay.py::test_federation_entities[1]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_federation_relay.test_federation_entities[1]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_federation_relay.test_relay_connection[100]": {
+        "code": "# pytest node: tests/benchmarks/test_federation_relay.py::test_relay_connection[100]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_federation_relay.test_relay_connection[100]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_federation_relay.test_relay_connection[1]": {
+        "code": "# pytest node: tests/benchmarks/test_federation_relay.py::test_relay_connection[1]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_federation_relay.test_relay_connection[1]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_generic_input.test_execute_generic_input_v2": {
+        "code": "# pytest node: tests/benchmarks/test_generic_input.py::test_execute_generic_input_v2\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_generic_input.test_execute_generic_input_v2",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_http.test_http_post[1-asgi]": {
+        "code": "# pytest node: tests/benchmarks/test_http.py::test_http_post[1-asgi]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_http.test_http_post[1-asgi]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_http.test_http_post[1-fastapi]": {
+        "code": "# pytest node: tests/benchmarks/test_http.py::test_http_post[1-fastapi]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_http.test_http_post[1-fastapi]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_http.test_http_post[1000-asgi]": {
+        "code": "# pytest node: tests/benchmarks/test_http.py::test_http_post[1000-asgi]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_http.test_http_post[1000-asgi]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_http.test_http_post[1000-fastapi]": {
+        "code": "# pytest node: tests/benchmarks/test_http.py::test_http_post[1000-fastapi]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_http.test_http_post[1000-fastapi]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_inputs.test_nested_inputs_and_scalars[null]": {
+        "code": "# pytest node: tests/benchmarks/test_inputs.py::test_nested_inputs_and_scalars[null]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_inputs.test_nested_inputs_and_scalars[null]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_inputs.test_nested_inputs_and_scalars[omitted]": {
+        "code": "# pytest node: tests/benchmarks/test_inputs.py::test_nested_inputs_and_scalars[omitted]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_inputs.test_nested_inputs_and_scalars[omitted]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_inputs.test_nested_inputs_and_scalars[value]": {
+        "code": "# pytest node: tests/benchmarks/test_inputs.py::test_nested_inputs_and_scalars[value]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_inputs.test_nested_inputs_and_scalars[value]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_is_awaitable.test_execute_awaitable_results[async]": {
+        "code": "# pytest node: tests/benchmarks/test_is_awaitable.py::test_execute_awaitable_results[async]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_is_awaitable.test_execute_awaitable_results[async]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_is_awaitable.test_execute_awaitable_results[sync]": {
+        "code": "# pytest node: tests/benchmarks/test_is_awaitable.py::test_execute_awaitable_results[sync]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_is_awaitable.test_execute_awaitable_results[sync]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_is_awaitable.test_is_awaitable[custom-awaitable]": {
+        "code": "# pytest node: tests/benchmarks/test_is_awaitable.py::test_is_awaitable[custom-awaitable]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_is_awaitable.test_is_awaitable[custom-awaitable]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_is_awaitable.test_is_awaitable[generator-coroutine]": {
+        "code": "# pytest node: tests/benchmarks/test_is_awaitable.py::test_is_awaitable[generator-coroutine]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_is_awaitable.test_is_awaitable[generator-coroutine]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_is_awaitable.test_is_awaitable[mixed]": {
+        "code": "# pytest node: tests/benchmarks/test_is_awaitable.py::test_is_awaitable[mixed]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_is_awaitable.test_is_awaitable[mixed]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_is_awaitable.test_is_awaitable[native-coroutine]": {
+        "code": "# pytest node: tests/benchmarks/test_is_awaitable.py::test_is_awaitable[native-coroutine]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_is_awaitable.test_is_awaitable[native-coroutine]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_is_awaitable.test_is_awaitable[object-heavy]": {
+        "code": "# pytest node: tests/benchmarks/test_is_awaitable.py::test_is_awaitable[object-heavy]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_is_awaitable.test_is_awaitable[object-heavy]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_is_awaitable.test_is_awaitable[primitive-heavy]": {
+        "code": "# pytest node: tests/benchmarks/test_is_awaitable.py::test_is_awaitable[primitive-heavy]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_is_awaitable.test_is_awaitable[primitive-heavy]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_parse_execute_large_query.test_execute_large_query_v2[both_cold]": {
+        "code": "# pytest node: tests/benchmarks/test_parse_execute_large_query.py::test_execute_large_query_v2[both_cold]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_parse_execute_large_query.test_execute_large_query_v2[both_cold]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_parse_execute_large_query.test_execute_large_query_v2[both_warm]": {
+        "code": "# pytest node: tests/benchmarks/test_parse_execute_large_query.py::test_execute_large_query_v2[both_warm]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_parse_execute_large_query.test_execute_large_query_v2[both_warm]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_parse_execute_large_query.test_execute_large_query_v2[parser_cold]": {
+        "code": "# pytest node: tests/benchmarks/test_parse_execute_large_query.py::test_execute_large_query_v2[parser_cold]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_parse_execute_large_query.test_execute_large_query_v2[parser_cold]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_parse_execute_large_query.test_execute_large_query_v2[parser_warm]": {
+        "code": "# pytest node: tests/benchmarks/test_parse_execute_large_query.py::test_execute_large_query_v2[parser_warm]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_parse_execute_large_query.test_execute_large_query_v2[parser_warm]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_parse_execute_large_query.test_execute_large_query_v2[uncached]": {
+        "code": "# pytest node: tests/benchmarks/test_parse_execute_large_query.py::test_execute_large_query_v2[uncached]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_parse_execute_large_query.test_execute_large_query_v2[uncached]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_parse_execute_large_query.test_parse_large_query": {
+        "code": "# pytest node: tests/benchmarks/test_parse_execute_large_query.py::test_parse_large_query\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_parse_execute_large_query.test_parse_large_query",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_parse_execute_large_query.test_validate_large_query": {
+        "code": "# pytest node: tests/benchmarks/test_parse_execute_large_query.py::test_validate_large_query\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_parse_execute_large_query.test_validate_large_query",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_permissions.test_permission_and_error[handled_error]": {
+        "code": "# pytest node: tests/benchmarks/test_permissions.py::test_permission_and_error[handled_error]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_permissions.test_permission_and_error[handled_error]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_permissions.test_permission_and_error[permission]": {
+        "code": "# pytest node: tests/benchmarks/test_permissions.py::test_permission_and_error[permission]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_permissions.test_permission_and_error[permission]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_schema_build.test_process_import_and_schema": {
+        "code": "# pytest node: tests/benchmarks/test_schema_build.py::test_process_import_and_schema\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_schema_build.test_process_import_and_schema",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_schema_build.test_schema_construction[100]": {
+        "code": "# pytest node: tests/benchmarks/test_schema_build.py::test_schema_construction[100]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_schema_build.test_schema_construction[100]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_schema_build.test_schema_construction[10]": {
+        "code": "# pytest node: tests/benchmarks/test_schema_build.py::test_schema_construction[10]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_schema_build.test_schema_construction[10]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_stadium.test_stadium_v2[seats_per_row_10]": {
+        "code": "# pytest node: tests/benchmarks/test_stadium.py::test_stadium_v2[seats_per_row_10]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_stadium.test_stadium_v2[seats_per_row_10]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_stadium.test_stadium_v2[seats_per_row_250]": {
+        "code": "# pytest node: tests/benchmarks/test_stadium.py::test_stadium_v2[seats_per_row_250]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_stadium.test_stadium_v2[seats_per_row_250]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_stadium.test_stadium_v2[seats_per_row_500]": {
+        "code": "# pytest node: tests/benchmarks/test_stadium.py::test_stadium_v2[seats_per_row_500]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_stadium.test_stadium_v2[seats_per_row_500]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_subscriptions.test_subscription_long_run_v2[1000]": {
+        "code": "# pytest node: tests/benchmarks/test_subscriptions.py::test_subscription_long_run_v2[1000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_subscriptions.test_subscription_long_run_v2[1000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_subscriptions.test_subscription_long_run_v2[20000]": {
+        "code": "# pytest node: tests/benchmarks/test_subscriptions.py::test_subscription_long_run_v2[20000]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_subscriptions.test_subscription_long_run_v2[20000]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_subscriptions.test_subscription_setup_and_close_v2": {
+        "code": "# pytest node: tests/benchmarks/test_subscriptions.py::test_subscription_setup_and_close_v2\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_subscriptions.test_subscription_setup_and_close_v2",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "version": 2
+}

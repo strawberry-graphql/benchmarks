@@ -1,0 +1,9 @@
+{
+    "arch": "arm64",
+    "cpu": "Apple M1 Max",
+    "machine": "patrick-studio",
+    "num_cpu": 10,
+    "os": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "ram": "not recorded",
+    "version": 1
+}
