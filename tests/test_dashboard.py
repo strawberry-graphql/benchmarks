@@ -79,6 +79,7 @@ def test_release_backlog_and_stress_upgrade(source):
 def test_release_at_main_measured_once_and_wrong_environment_not_reused(source):
     start = commit(source)
     main = commit(source, "1.0.0")
+    git(source, "tag", "1.0.1")
     options = {"start_commit": start}
     assert pending_targets(source, [], "test-runner", **options) == [("1.0.0", True)]
     assert pending_targets(source, [record(main)], "test-runner", **options) == []

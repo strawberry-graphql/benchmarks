@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -103,7 +104,12 @@ def main() -> None:
     root = Path(__file__).resolve().parents[1]
     source = args.source.resolve()
     targets = (
-        [(args.ref, args.include_stress)]
+        [
+            (
+                args.ref,
+                args.include_stress or bool(re.fullmatch(r"\d+\.\d+\.\d+", args.ref)),
+            )
+        ]
         if args.ref
         else pending_targets(
             source,
