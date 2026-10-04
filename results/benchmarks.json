@@ -44,6 +44,33 @@
         "unit": "seconds",
         "version": "native-median-v1"
     },
+    "test_arguments.test_execute_with_large_list_argument[1024]": {
+        "code": "# pytest node: tests/benchmarks/test_arguments.py::test_execute_with_large_list_argument[1024]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_arguments.test_execute_with_large_list_argument[1024]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_arguments.test_execute_with_large_list_argument[16384]": {
+        "code": "# pytest node: tests/benchmarks/test_arguments.py::test_execute_with_large_list_argument[16384]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_arguments.test_execute_with_large_list_argument[16384]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_arguments.test_execute_with_large_list_argument[262144]": {
+        "code": "# pytest node: tests/benchmarks/test_arguments.py::test_execute_with_large_list_argument[262144]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_arguments.test_execute_with_large_list_argument[262144]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
     "test_cache_churn.test_parser_cache_churn": {
         "code": "# pytest node: tests/benchmarks/test_cache_churn.py::test_parser_cache_churn\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
         "name": "test_cache_churn.test_parser_cache_churn",
