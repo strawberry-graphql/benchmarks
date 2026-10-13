@@ -701,6 +701,24 @@
         "unit": "seconds",
         "version": "native-median-v1"
     },
+    "test_schema_build.test_schema_construction_v2[100]": {
+        "code": "# pytest node: tests/benchmarks/test_schema_build.py::test_schema_construction_v2[100]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_schema_build.test_schema_construction_v2[100]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
+    "test_schema_build.test_schema_construction_v2[10]": {
+        "code": "# pytest node: tests/benchmarks/test_schema_build.py::test_schema_construction_v2[10]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
+        "name": "test_schema_build.test_schema_construction_v2[10]",
+        "param_names": [],
+        "params": [],
+        "type": "time",
+        "unit": "seconds",
+        "version": "native-median-v1"
+    },
     "test_stadium.test_stadium_v2[seats_per_row_10]": {
         "code": "# pytest node: tests/benchmarks/test_stadium.py::test_stadium_v2[seats_per_row_10]\n# Native median seconds per callback; not request p95/p99.\n# See about.html for methodology and workflow status.",
         "name": "test_stadium.test_stadium_v2[seats_per_row_10]",
