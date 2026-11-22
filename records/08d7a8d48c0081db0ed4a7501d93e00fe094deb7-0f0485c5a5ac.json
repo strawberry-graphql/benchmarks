@@ -5,7 +5,7 @@
     "worktree_dirty": false,
     "suite_sha256": "29d7f505064f6e6757e13e2830ac3faebfc8598268c04575bfdd230a802addaa",
     "lock_sha256": "bbe5c237f178995ed9088449ae7ad1baa7d299e788a9169556194c45acfcb8c7",
-    "recorded_at": "2026-11-16T17:59:52.217579+00:00",
+    "recorded_at": "2026-11-22T17:57:34.417160+00:00",
     "instrument": "walltime",
     "python": "3.14.7 (main, Sep  1 2026, 14:05:28) [Clang 22.1.3 ]",
     "python_executable": "/Users/patrickarminio/actions-runner/_work/benchmarks/benchmarks/strawberry/.venv/bin/python",
@@ -244,13 +244,13 @@
       "ImageOS": null,
       "ImageVersion": null,
       "GITHUB_REPOSITORY": "strawberry-graphql/benchmarks",
-      "GITHUB_RUN_ID": "43923507756",
+      "GITHUB_RUN_ID": "45052012170",
       "GITHUB_RUN_ATTEMPT": "1"
     }
   },
   "ref": "08d7a8d48c0081db0ed4a7501d93e00fe094deb7",
-  "include_stress": false,
-  "benchmark_count": 77,
-  "raw_sha256": "0af4c07d9d481e16d6b15215351197e676da697e11e49a64d43f21602392dd3d",
+  "include_stress": true,
+  "benchmark_count": 84,
+  "raw_sha256": "7fe4086a02727b38645bd8384b645b5ca77047ac094cbce3aca7ff05b743c1a0",
   "measurement": "median native wall-clock seconds per callback"
 }
